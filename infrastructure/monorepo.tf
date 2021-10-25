@@ -36,4 +36,23 @@ resource "digitalocean_droplet" "monorepo" {
       "sudo apt-get -y install terraform"
     ]
   }
+  // Copy over Terraform files
+  // NOTE: This is not a good idea but will help me cut costs: I can run several 
+  // Docker images in one Droplet instead of running several of them.
+  provisioner "remote-exec" {
+    inline = [
+      "mkdir -p /src/terraform/backend",
+    ]
+  }
+  provisioner "file" {
+    source      = "./backend/"
+    destination = "/src/terraform/backend"
+  }
+  provisioner "remote-exec" {
+    inline = [
+      "cd /src/terraform/backend",
+      "terraform init",
+      "terraform apply -auto-approve"
+    ]
+  }
 }

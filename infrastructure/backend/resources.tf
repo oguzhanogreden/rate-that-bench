@@ -1,5 +1,5 @@
 resource "docker_image" "backend" {
-  name         = "oguzhanogreden2/rate-that-bench:b900d001a0e06ca2b658830f53a841e5cb55ae69"
+  name         = "oguzhanogreden2/rate-that-bench:infrastructure-digitalocean"
   keep_locally = false
 }
 
