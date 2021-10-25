@@ -1,8 +1,8 @@
 resource "digitalocean_droplet" "monorepo" {
-  image              = "debian-11-x64"
-  name               = "monorepo"
-  region             = "ams3"
-  size               = "s-1vcpu-1gb"
+  image  = "debian-11-x64"
+  name   = "monorepo"
+  region = "ams3"
+  size   = "s-1vcpu-1gb"
   #   private_networking = true // Deprecated, uncomment and plan to see warning
   ssh_keys = [
     data.digitalocean_ssh_key.terraform.id // TODO: What does `.id` do?
@@ -28,8 +28,12 @@ resource "digitalocean_droplet" "monorepo" {
       "sudo add-apt-repository \"deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable\"",
       "sudo apt-get update",
       "apt-cache policy docker-ce",
-      "sudo apt-get -y install docker-ce"
+      "sudo apt-get -y install docker-ce",
+      # Install terraform
+      "curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -",
+      "sudo apt-add-repository \"deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main\"",
+      "sudo apt-get update",
+      "sudo apt-get -y install terraform"
     ]
   }
 }
-
