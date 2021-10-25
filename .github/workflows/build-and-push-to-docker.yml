@@ -32,3 +32,4 @@ jobs:
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
           workdir: backend
           dockerfile: Dockerfile
+          tags: "${{ github.head_ref }}"
