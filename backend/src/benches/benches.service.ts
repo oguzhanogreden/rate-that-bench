@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateBenchDto } from './dto/create-bench.dto';
 import { UpdateBenchDto } from './dto/update-bench.dto';
 import { Bench } from './entities/bench.entity';
@@ -7,16 +9,27 @@ import { Bench } from './entities/bench.entity';
 export class BenchesService {
   private readonly benches: Bench[] = [];
 
+  constructor(
+    @InjectRepository(Bench)
+    private benchesRepository: Repository<Bench>,
+  ) {}
+
   create(createBenchDto: CreateBenchDto) {
-    return 'This action adds a new bench';
+    function mapper(dto: CreateBenchDto): Bench {
+      return {
+        location: dto.location,
+      };
+    }
+
+    this.benchesRepository.save(mapper(createBenchDto));
   }
 
   findAll() {
-    return `This action returns all benches`;
+    return this.benchesRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bench`;
+  findOne(id: string) {
+    return this.benchesRepository.findOne(id);
   }
 
   update(id: number, updateBenchDto: UpdateBenchDto) {
