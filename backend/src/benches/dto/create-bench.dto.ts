@@ -1,1 +1,3 @@
-export class CreateBenchDto {}
+export class CreateBenchDto {
+  location: object;
+}

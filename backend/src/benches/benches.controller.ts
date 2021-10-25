@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { BenchesService } from './benches.service';
 import { CreateBenchDto } from './dto/create-bench.dto';
 import { UpdateBenchDto } from './dto/update-bench.dto';
@@ -19,7 +27,7 @@ export class BenchesController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.benchesService.findOne(+id);
+    return this.benchesService.findOne(id);
   }
 
   @Patch(':id')

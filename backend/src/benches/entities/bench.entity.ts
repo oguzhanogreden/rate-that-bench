@@ -1,5 +1,10 @@
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
+@Entity()
 export class Bench {
-  id: string;
-  lat: number;
-  lon: number;
+  @PrimaryGeneratedColumn('uuid')
+  id?: string;
+
+  @Column('json')
+  location: object;
 }
