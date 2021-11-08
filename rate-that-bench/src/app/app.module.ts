@@ -21,10 +21,7 @@ import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SearchComponent,
-  ],
+  declarations: [AppComponent, SearchComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
