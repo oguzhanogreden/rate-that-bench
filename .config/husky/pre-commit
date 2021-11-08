@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+npx prettier --config .config/prettierrc.js --write  $(git diff main --name-only --relative | xargs)

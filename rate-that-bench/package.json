@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prepare": "cd .. && husky install rate-that-bench/.husky"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +36,7 @@
     "@types/google.maps": "^3.45.6",
     "@types/jasmine": "~3.8.0",
     "@types/node": "^12.11.1",
+    "husky": "^7.0.4",
     "jasmine-core": "~3.8.0",
     "karma": "~6.3.0",
     "karma-chrome-launcher": "~3.1.0",
