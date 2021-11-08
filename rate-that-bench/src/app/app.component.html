@@ -1,1 +1,26 @@
+<!-- This should go to app-shell root. -->
+<!-- <mat-toolbar>
+  <span>rate that bench</span>
+</mat-toolbar> -->
+
+<!-- These may be padded by the shell. -->
+<div style="padding: 1em">
+  <!-- <app-search #search (result)="onSearchResult($event)"></app-search> -->
+</div>
 <router-outlet></router-outlet>
+
+<!-- <app-map
+  #map
+  [mapCenter]="(search.result | async)?.location"
+  [currentPosition]="currentPosition"
+></app-map> -->
+<!-- These may be padded by the shell. -->
+<!-- <div style="padding: 0 1em">
+  <app-add-bench
+    #candidate
+    *ngIf="map.candidateMarker"
+    [candidateLatLng]="map.candidateMarker"
+    (locationChanged)="onCandidateLocationChanged($event)"
+  ></app-add-bench>
+  <app-bench *ngIf="map.selected" [bench]="map.selected"></app-bench> -->
+
