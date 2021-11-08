@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npx prettier --config .config/prettierrc.js --write  $(git diff main --diff-filter=d  --name-only | grep -Ei ".+ts|.+html|.+json|.+css" | xargs)
+npx pretty-quick --staged
