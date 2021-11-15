@@ -19,9 +19,11 @@ import { AppComponent } from './app.component';
 // import { BenchComponent } from './bench/bench.component';
 // import { MapComponent } from './map/map.component';
 import { SearchComponent } from './search/search.component';
+import { UserService } from './user.service';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
-  declarations: [AppComponent, SearchComponent],
+  declarations: [AppComponent, SearchComponent, MapComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
@@ -42,7 +44,7 @@ import { SearchComponent } from './search/search.component';
     MatToolbarModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

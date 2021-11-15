@@ -1,0 +1,8 @@
+<div [ngSwitch]="position$ | async">
+  <p *ngSwitchCase="'unknown' as UserPosition">
+    We can't determine your location.
+  </p>
+  <p *ngSwitchDefault>Benches around: {{ position$ | async }}</p>
+</div>
+
+<!-- TODO: #5 Add map here! -->

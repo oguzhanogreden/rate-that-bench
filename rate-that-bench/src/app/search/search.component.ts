@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-search',
@@ -6,15 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  constructor() {}
+  constructor(private user: UserService) {}
+
+  @Output()
+  locationSearched = new EventEmitter<null>();
 
   ngOnInit(): void {}
 
   getLocation() {
-    navigator.geolocation.getCurrentPosition(this.navigatorCallback);
-  }
-
-  private navigatorCallback(position: GeolocationPosition) {
-    console.log(position);
+    this.locationSearched.next();
+    this.user.position.subscribe();
   }
 }
