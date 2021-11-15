@@ -1,17 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
+import { map } from 'rxjs/operators';
+import {
+  DefaultPosition as DefaultUserPosition,
+  UserService,
+} from '../user.service';
+
+const defaultCenter = {
+  lat: DefaultUserPosition.latitude,
+  lng: DefaultUserPosition.longitude,
+} as google.maps.LatLngLiteral;
 
 @Component({
   selector: 'app-map',
-  templateUrl: './map.component.html',
+  template: `
+    <google-map
+      width="100%"
+      [zoom]="zoom"
+      [center]="(_coords | async) ?? defaultCenter"
+    >
+    </google-map>
+  `,
   styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
-  position$ = this.user.position;
+  _coords = this.user.coordinates.pipe(
+    map((c) => <google.maps.LatLngLiteral>{ lat: c.latitude, lng: c.longitude })
+  );
 
-  constructor(private user: UserService) {
-    this.position$.subscribe(console.log);
-  }
+  zoom = 11;
+
+  public defaultCenter = defaultCenter;
+
+  constructor(private user: UserService) {}
 
   ngOnInit(): void {}
 

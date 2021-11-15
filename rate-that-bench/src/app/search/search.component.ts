@@ -16,6 +16,5 @@ export class SearchComponent implements OnInit {
 
   getLocation() {
     this.locationSearched.next();
-    this.user.position.subscribe();
   }
 }

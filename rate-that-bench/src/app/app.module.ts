@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -12,15 +13,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-// import { AddBenchComponent } from './add-bench/add-bench.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { BenchOccupancyComponent } from './bench-occupancy/bench-occupancy.component';
-// import { BenchComponent } from './bench/bench.component';
-// import { MapComponent } from './map/map.component';
+import { MapComponent } from './map/map.component';
 import { SearchComponent } from './search/search.component';
 import { UserService } from './user.service';
-import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [AppComponent, SearchComponent, MapComponent],
@@ -43,6 +40,7 @@ import { MapComponent } from './map/map.component';
     MatSnackBarModule,
     MatToolbarModule,
     ReactiveFormsModule,
+    GoogleMapsModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent],
