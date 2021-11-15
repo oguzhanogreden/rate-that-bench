@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginFormComponent } from './login-google/login-form/login-form.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
-  { 'path': 'login', component: LoginFormComponent},
-  { 'path': '', 'redirectTo': '/login', pathMatch: 'full' }
+  { path: '**', component: SearchComponent },
+  // { 'path': '', pathMatch: 'full' }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
